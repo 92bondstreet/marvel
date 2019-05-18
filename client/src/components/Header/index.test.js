@@ -5,10 +5,10 @@ import 'jest-dom/extend-expect';
 
 afterEach(cleanup);
 
-describe('<DropZone />', () => {
+describe('<Header />', () => {
   it('should render the Header section', () => {
     const {getByText} = render(<Header />);
 
-    expect(getByText(/Medical Reports/)).toBeInTheDocument();
+    expect(getByText(/Marvel characters/)).toBeInTheDocument();
   });
 });

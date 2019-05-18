@@ -3,6 +3,12 @@ SHELL := /bin/bash
 sandbox: ## sandbox for client-side dev purpose
 	cd client && yarn start
 
+test: ## test with watcher
+	cd client && yarn test --coverage
+
+test-ci: ## test in ci mode (without watcher)
+	cd client && yarn test --coverage --watchAll=false
+
 help: ## This help dialog.
 	@IFS=$$'\n' ; \
 	intro_lines=(`fgrep -h "###" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/###//'`); \

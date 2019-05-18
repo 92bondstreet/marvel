@@ -15,8 +15,9 @@ const getDetail = urls => {
 };
 
 const Character = ({comics, name, series, thumbnail, urls}) =>
-  <UikWidget className={styles.wrapper} margin>
+  <UikWidget className={styles.wrapper} margin data-testid="character-widget">
     <div
+      data-testid="character-cover-div"
       className={styles.cover}
       style={{
         'backgroundImage': `url(${thumbnail.path}.${thumbnail.extension})`
