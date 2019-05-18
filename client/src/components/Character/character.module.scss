@@ -1,0 +1,64 @@
+@import '@uik/_vars.scss';
+.wrapper {
+  flex-basis: 350px;
+  flex-shrink: 1;
+}
+
+.cover {
+  background: no-repeat center center;
+  background-size: cover;
+  height: 190px;
+}
+
+.content {
+  padding: 24px 30px;
+  h3 {
+    font-weight: 500;
+  }
+  a {
+    color: inherit;
+  }
+  p {
+    color: $textSecondary;
+    margin-top: 0.7rem;
+  }
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .duration {
+      font-size: .875rem;
+      color: $textSecondary;
+    }
+  }
+}
+
+.extra {
+  border-top: $borderDefault;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.desc {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+
+  span.desc {
+    color: $textSecondary;
+    font-size: .875rem;
+  }
+}
+
+.desc + .desc {
+  margin-left: 15px;
+}
+
+span.source {
+  color: $textSecondary;
+  font-size: .75rem;
+}
