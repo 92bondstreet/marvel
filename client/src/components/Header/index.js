@@ -4,8 +4,8 @@ import {UikTopBar, UikTopBarSection, UikTopBarTitle} from '@uik';
 
 import styles from './header.module.scss';
 
-const AnalyticsHeader = props =>
-  <UikTopBar {...props}>
+const Header = () =>
+  <UikTopBar>
     <UikTopBarSection>
       <UikTopBarTitle large>
         <Emoji symbol="🦸" label="Superhero" className={styles.emoji} /> Marvel characters
@@ -15,4 +15,4 @@ const AnalyticsHeader = props =>
 
 ;
 
-export default AnalyticsHeader;
+export default Header;

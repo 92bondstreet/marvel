@@ -38,4 +38,5 @@ the Marvel Comics API private key
 
 ## 📱 Features
 
-- [X] 🦸 Display a grid of characters (name, thumbnail, number of comics and series )
+- [X] 🦸 Display a grid of characters (name, thumbnail, number of comics and series)
+- [X] 📄 Paginate and/or select a given page

@@ -31,15 +31,13 @@ const Character = ({comics, name, series, thumbnail, urls}) =>
       </h3>
     </div>
     <div className={styles.extra}>
-      <div>
-        <div className={styles.desc} title="Comics">
-          <Emoji symbol="💬" label="Speech Balloon" />
-          <span className={styles.desc}>{comics.available} comics</span>
-        </div>
-        <div className={styles.desc} title="Series">
-          <Emoji symbol="📚" label="Books" />
-          <span className={styles.desc}>{series.available} series</span>
-        </div>
+      <div className={styles.desc} title="Comics">
+        <Emoji symbol="💬" label="Speech Balloon" />
+        <span className={styles.desc}>{comics.available} comics</span>
+      </div>
+      <div className={styles.desc} title="Series">
+        <Emoji symbol="📚" label="Books" />
+        <span className={styles.desc}>{series.available} series</span>
       </div>
     </div>
   </UikWidget>
