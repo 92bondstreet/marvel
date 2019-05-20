@@ -1,4 +1,4 @@
-# MARCEL
+# MARVEL
 
 > Marvel [Characters](https://www.marvel.com/characters) portfolio
 
@@ -9,8 +9,8 @@ Very - _very very_ - minimalist portfolio of Marvel Characters based on [Marvel 
 ## 🏗️  Installation
 
 ```sh
-❯ git clone git@github.com:92bondstreet/marcel.git
-❯ cd marcel
+❯ git clone git@github.com:92bondstreet/marvel.git
+❯ cd marvel
 ```
 
 **Note:**

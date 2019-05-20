@@ -3,6 +3,9 @@ SHELL := /bin/bash
 sandbox: ## sandbox for client-side dev purpose
 	cd client && yarn start
 
+serverless: ## deploy with zeit
+	cd client && yarn build && now --target production
+
 test: ## test with watcher
 	cd client && yarn test --coverage
 
