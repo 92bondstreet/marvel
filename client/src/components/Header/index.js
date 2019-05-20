@@ -27,7 +27,7 @@ const Header = ({total}) =>
 ;
 
 Header.propTypes = {
-  'total': PropTypes.number.isRequired
+  'total': PropTypes.number
 };
 
 export default Header;

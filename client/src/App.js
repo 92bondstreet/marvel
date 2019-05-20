@@ -58,8 +58,7 @@ const App = () => {
   );
 
   /**
-   * Move to the selected page
-   * available only if are not fetching new characters
+   * Load characters from the selected page
    * @param  {Event} event
    * @return
    */

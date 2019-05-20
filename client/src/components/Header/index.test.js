@@ -7,8 +7,14 @@ afterEach(cleanup);
 
 describe('<Header />', () => {
   it('should render the Header section', () => {
-    const {getByText} = render(<Header />);
+    const {getByText} = render(<Header total={1234}/>);
 
     expect(getByText(/Marvel characters/)).toBeInTheDocument();
+  });
+
+  it('should render the total tag', () => {
+    const {getByText} = render(<Header total={1234}/>);
+
+    expect(getByText(/1234/)).toBeInTheDocument();
   });
 });

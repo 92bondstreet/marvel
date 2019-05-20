@@ -9,7 +9,7 @@ import styles from './pagination.module.scss';
 const Pagination = ({items, onChangePage}) => {
   return (
     <UikTopBar>
-      <UikTopBarSection className={styles.pagination}>
+      <UikTopBarSection className={styles.pagination} data-testid="jw-react-pagination">
         <JwPagination
           items={items}
           {...PAGINATION_DEFAULT_PROPS}
