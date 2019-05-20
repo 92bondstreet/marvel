@@ -9,3 +9,13 @@ export const API_MARVEL_PUBLIC = 'https://gateway.marvel.com:443/v1/public';
 
 export const PAGINATION_FIRST_PAGE = 1;
 export const PAGINATION_DEFAULT_LIMIT = 20;
+export const PAGINATION_DEFAULT_PROPS = {
+  'pageSize': 1,
+  'maxPages': 5
+};
+export const PAGINATION_LABELS = {
+  'first': '<<',
+  'last': '>>',
+  'previous': '<',
+  'next': '>'
+};

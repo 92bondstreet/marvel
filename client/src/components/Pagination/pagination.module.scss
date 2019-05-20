@@ -1,9 +1,12 @@
-input.page[type='number']::-webkit-outer-spin-button,
-input.page[type='number']::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
+@import '@uik/_vars.scss';
 
-input.page[type='number'] {
-  -moz-appearance: textfield;
+.pagination {
+  margin: 0 auto;
+
+  :global {
+    li.active > a {
+      background-color: $blue;
+      color: #ffffff;
+    }
+  }
 }

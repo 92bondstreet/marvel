@@ -1,3 +1,4 @@
+/*eslint-disable new-cap*/
 import CryptoJS from 'crypto-js';
 import querystring from 'querystring';
 import {
@@ -12,7 +13,8 @@ import {
  */
 export function getAuthentication () {
   const timestamp = Date.now();
-  const hash = CryptoJS.MD5( //eslint-disable-line
+  const hash = CryptoJS.MD5(
+    //eslint-disable-line
     `${timestamp}${MARVEL_PRIVATE_KEY}${MARVEL_PUBLIC_KEY}`
   ).toString(CryptoJS.enc.Hex);
 
@@ -21,9 +23,9 @@ export function getAuthentication () {
 
 /**
  * Get the search query for api
- * @param  {[type]} page  [description]
- * @param  {[type]} limit [description]
- * @return {[type]}       [description]
+ * @param  {Number} page
+ * @param  {Number} limit
+ * @return {String}
  */
 export function getQuery (page, limit = PAGINATION_DEFAULT_LIMIT) {
   const query = {

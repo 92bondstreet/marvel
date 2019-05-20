@@ -10,7 +10,7 @@ import {
   UikContainerVertical,
   UikLayoutMain
 } from '@uik';
-import {API_MARVEL_PUBLIC} from './constants';
+import {API_MARVEL_PUBLIC, PAGINATION_DEFAULT_LIMIT} from './constants';
 
 import '@uik/styles.css';
 import '@uik/index.scss';
@@ -19,54 +19,68 @@ import 'typeface-roboto';
 
 const App = () => {
   const [page, setPage] = useState(1);
-  const {data, loading, request} = useFetch({'baseUrl': `${API_MARVEL_PUBLIC}/characters?${getAuthentication()}`});
+  const [pagination, setPagination] = useState([]);
+  const {data, request} = useFetch({
+    'baseUrl': `${API_MARVEL_PUBLIC}/characters?${getAuthentication()}`
+  });
+  const total = data && data.data && data.data.total;
 
   /**
-   * Hook to fetch characters according page
+   * Hook to fetch characters according current page
    * @param  {Number} page
    */
-  useEffect(() => {
-    console.log(getQuery(page));
-    request.get(`&${getQuery(page)}`);
-  }, [page]);
+  useEffect(
+    () => {
+      request.get(`&${getQuery(page)}`);
+    },
+    [page, request]
+  );
 
   /**
-   * Move to the previous page (and fetch the right characters)
-   * available only if are not fetching new characters
-   * @return
+   * Hook to create the pagination according the total of characters
+   * @param  {Number} total
    */
-  function handleOnPrev () {
-    if (loading) {
-      return;
-    }
+  useEffect(
+    () => {
+      const nbPages = Math.round(total / PAGINATION_DEFAULT_LIMIT);
 
-    const current = page - 1;
+      if (! Number.isInteger(nbPages)) {
+        return;
+      }
 
-    if (current < 1) {
-      return;
-    }
+      const items = [...Array(nbPages).keys()].map(i => ({
+        'page': i + 1
+      }));
 
-    setPage(current);
-  }
+      setPagination(items);
+    },
+    [total]
+  );
 
   /**
-   * Move to the next page (and fetch the right characters)
+   * Move to the selected page
    * available only if are not fetching new characters
+   * @param  {Event} event
    * @return
    */
-  function handleOnNext () {
-    if (loading) {
+  function handleChangePage (event) {
+    const [selected = {}] = event;
+
+    if (! Number.isInteger(selected.page)) {
       return;
     }
 
-    setPage(value => value + 1);
+    setPage(selected.page);
   }
 
   return (
     <UikContainerHorizontal className={styles.app}>
       <UikContainerVertical>
-        <Header />
-        <Pagination page={page} onPrev={handleOnPrev} onNext={handleOnNext}/>
+        <Header total={total}/>
+        <Pagination
+          items={pagination}
+          onChangePage={handleChangePage}
+        />
         <UikLayoutMain>
           {data && <Grid characters={data.data.results} />}
         </UikLayoutMain>

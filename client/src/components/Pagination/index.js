@@ -1,30 +1,29 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import {UikButton, Uikon, UikInput, UikTopBar, UikTopBarSection} from '@uik';
+import JwPagination from 'jw-react-pagination';
+import {UikTopBar, UikTopBarSection} from '@uik';
+import {PAGINATION_DEFAULT_PROPS, PAGINATION_LABELS} from '../../constants';
 
 import styles from './pagination.module.scss';
 
-const Pagination = ({onNext, onPrev, page}) =>
-  <UikTopBar>
-    <UikTopBarSection>
-      <UikButton icon={<Uikon>arrow_left</Uikon>} onClick={onPrev} iconOnly />
-      <UikInput
-        placeholder="1"
-        value={page}
-        type="number"
-        min="1"
-        className={styles.page}
-      />
-      <UikButton icon={<Uikon>arrow_right</Uikon>} onClick={onNext} iconOnly />
-    </UikTopBarSection>
-  </UikTopBar>
-
-;
+const Pagination = ({items, onChangePage}) => {
+  return (
+    <UikTopBar>
+      <UikTopBarSection className={styles.pagination}>
+        <JwPagination
+          items={items}
+          {...PAGINATION_DEFAULT_PROPS}
+          labels={PAGINATION_LABELS}
+          onChangePage={onChangePage}
+        />
+      </UikTopBarSection>
+    </UikTopBar>
+  );
+};
 
 Pagination.propTypes = {
-  'onNext': PropTypes.func.isRequired,
-  'onPrev': PropTypes.func.isRequired,
-  'page': PropTypes.number.isRequired
+  'items': PropTypes.array.isRequired,
+  'onChangePage': PropTypes.func.isRequired
 };
 
 export default Pagination;
