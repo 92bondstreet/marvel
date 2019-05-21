@@ -77,4 +77,6 @@ the Marvel Comics API private key
 
 - [X] 🦸 Display a grid of characters (name, thumbnail, number of comics and series)
 - [X] 📄 Paginate and/or select a given page
-- [x] Loading placeholder during characters fetching
+- [x] 🗃️ Loading placeholder during characters fetching
+- [x] 💯 Set limit per page
+- [x] 🔤 Order by name or modification date

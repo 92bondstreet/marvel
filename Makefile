@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 
 build: ## build a ready-production web application with Docker
-	docker-compose up -d
+	docker-compose up -d --build
 
 build-local: ## build a ready-production web application
 	yarn --cwd client build

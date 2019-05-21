@@ -4,6 +4,7 @@ export const {
 
 export const PAGINATION_FIRST_PAGE = 1;
 export const PAGINATION_DEFAULT_LIMIT = 20;
+export const PAGINATION_DEFAULT_ORDERBY = 'name';
 export const PAGINATION_DEFAULT_PROPS = {
   'pageSize': 1,
   'maxPages': 5

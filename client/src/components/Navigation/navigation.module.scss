@@ -1,0 +1,12 @@
+.mobileNavigation {
+  display: none;
+  @media screen and (max-width: 1200px) {
+    display: flex;
+    justify-content: space-around;
+    flex-shrink: 0;
+  }
+  .mobileItem {
+    justify-content: center;
+    flex-grow: 1;
+  }
+}
