@@ -2,11 +2,13 @@
 
 > Marvel [Characters](https://www.marvel.com/characters) portfolio
 
-![Marvel portfolio](./web.png)
+[![Marvel portfolio](./web.png)](http://ec2-18-216-242-220.us-east-2.compute.amazonaws.com/)
 
 ## 🐣 Introduction
 
 Very - _very very_ - minimalist portfolio of Marvel Characters based on [Marvel API](https://developer.marvel.com/documentation/getting_started)
+
+## 💻 [Live demo](http://ec2-18-216-242-220.us-east-2.compute.amazonaws.com/)
 
 ## 🏗️  Installation
 
@@ -54,6 +56,7 @@ the Marvel Comics API private key
 
 ```sh
 ❯ make install
+## create client/.env and server/.env files with the right env variables
 ❯ make sandbox-local
 ```
 
@@ -74,3 +77,4 @@ the Marvel Comics API private key
 
 - [X] 🦸 Display a grid of characters (name, thumbnail, number of comics and series)
 - [X] 📄 Paginate and/or select a given page
+- [x] Loading placeholder during characters fetching

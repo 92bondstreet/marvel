@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {getQuery} from './utils';
 import Grid from './components/Grid';
 import Header from './components/Header';
+import Placeholder from './components/Placeholder';
 import Pagination from './components/Pagination';
 
 import useFetch from 'use-http';
@@ -20,7 +21,7 @@ import 'typeface-roboto';
 const App = () => {
   const [page, setPage] = useState(1);
   const [pagination, setPagination] = useState([]);
-  const {data, request} = useFetch({
+  const {data, loading, request} = useFetch({
     'baseUrl': `${MARVEL_PROXY_API}/characters?`
   });
   const total = data && data.data && data.data.total;
@@ -81,6 +82,7 @@ const App = () => {
           onChangePage={handleChangePage}
         />
         <UikLayoutMain>
+          {loading && <Placeholder />}
           {data && <Grid characters={data.data.results} />}
         </UikLayoutMain>
       </UikContainerVertical>
