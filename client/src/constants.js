@@ -1,5 +1,5 @@
 export const {
-  'REACT_APP_MARVEL_PROXY_API': MARVEL_PROXY_API = 'http://localhost:8000'
+  'REACT_APP_MARVEL_PROXY_API': MARVEL_PROXY_API = ''
 } = process.env;
 
 export const PAGINATION_FIRST_PAGE = 1;

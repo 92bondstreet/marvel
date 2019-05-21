@@ -60,8 +60,14 @@ the Marvel Comics API private key
 ## 📦 Distribution and Packaging
 
 ```sh
-## build and start a ready-production web application
+## build and start a ready-production web application with docker
 ❯ make build
+```
+
+#### without docker
+
+```sh
+❯ make build-local
 ```
 
 ## 📱 Features

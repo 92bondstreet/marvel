@@ -1,9 +1,10 @@
-version: '2'
+version: '3'
 services:
   server:
     container_name: marvel-server
     build:
       context: ./server
+    image: marvel/server
     volumes: # mounting following volumes allows the livereload
       - ./server:/var/marvel
       - /var/marvel/node_modules
@@ -14,13 +15,14 @@ services:
     container_name: marvel-client
     build:
       context: ./client
+    image: marvel/client
     volumes: # mounting following volumes allows the livereload
       - ./client:/var/marvel
       - /var/marvel/node_modules
     ports:
       - "3000:3000"
-    env_file: ./client/.env
     environment:
+      - REACT_APP_MARVEL_PROXY_API=http://localhost:8000
       - CHOKIDAR_USEPOLLING=true
     depends_on:
       - server
