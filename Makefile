@@ -1,16 +1,30 @@
 SHELL := /bin/bash
 
-sandbox: ## sandbox for client-side dev purpose
-	cd client && yarn start
+build: ## build a ready-production web application
+	yarn --cwd client build
+	NODE_ENV=production yarn --cwd server start
+
+install: ## install what we need
+	yarn --cwd client install
+	yarn --cwd server install
+
+sandbox: ## sandbox for dev purpose
+	./server/node_modules/.bin/concurrently - kill-others "make sandbox-client" "make sandbox-server"
+
+sandbox-client: ## sandbox for client-side dev purpose
+	yarn --cwd client start
+
+sandbox-server: ## sandbox for server-side dev purpose
+	yarn --cwd server start
 
 serverless: ## deploy with zeit
 	cd client && yarn build && now --target production
 
 test: ## test with watcher
-	cd client && yarn test --coverage
+	yarn --cwd client test --coverage
 
 test-ci: ## test in ci mode (without watcher)
-	cd client && yarn test --coverage --watchAll=false
+	yarn --cwd client test --coverage --watchAll=false
 
 help: ## This help dialog.
 	@IFS=$$'\n' ; \

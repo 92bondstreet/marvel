@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {getAuthentication, getQuery} from './utils';
+import {getQuery} from './utils';
 import Grid from './components/Grid';
 import Header from './components/Header';
 import Pagination from './components/Pagination';
@@ -10,7 +10,7 @@ import {
   UikContainerVertical,
   UikLayoutMain
 } from '@uik';
-import {API_MARVEL_PUBLIC, PAGINATION_DEFAULT_LIMIT} from './constants';
+import {MARVEL_PROXY_API, PAGINATION_DEFAULT_LIMIT} from './constants';
 
 import '@uik/styles.css';
 import '@uik/index.scss';
@@ -21,7 +21,7 @@ const App = () => {
   const [page, setPage] = useState(1);
   const [pagination, setPagination] = useState([]);
   const {data, request} = useFetch({
-    'baseUrl': `${API_MARVEL_PUBLIC}/characters?${getAuthentication()}`
+    'baseUrl': `${MARVEL_PROXY_API}/characters?`
   });
   const total = data && data.data && data.data.total;
 
@@ -31,7 +31,7 @@ const App = () => {
    */
   useEffect(
     () => {
-      request.get(`&${getQuery(page)}`);
+      request.get(`${getQuery(page)}`);
     },
     [page, request]
   );
