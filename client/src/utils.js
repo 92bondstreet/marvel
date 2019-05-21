@@ -9,6 +9,7 @@ import {PAGINATION_DEFAULT_LIMIT} from './constants';
  * @return {String}
  */
 export function getQuery (page, limit = PAGINATION_DEFAULT_LIMIT) {
+  console.log(page);
   const query = {
     limit,
     'offset': (page - 1) * limit

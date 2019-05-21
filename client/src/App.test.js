@@ -1,6 +1,6 @@
 import React from 'react';
 import App from './App';
-import {cleanup, render, waitForElement} from 'react-testing-library';
+import {cleanup, render, wait, waitForElement} from 'react-testing-library';
 import fetchMock from 'fetch-mock';
 import {PAGINATION_DEFAULT_LIMIT} from './constants';
 import 'jest-dom/extend-expect';
@@ -130,10 +130,9 @@ describe('<App />', () => {
   it('should render the pagination according the total', async () => {
     fetchMock.get('*', TOTAL);
 
-    const {container, getAllByTestId} = render(<App />);
+    const {container} = render(<App />);
 
-    await waitForElement(() => getAllByTestId('jw-react-pagination'));
-
+    await wait(() => container.querySelector('li.page-item.page-number'));
     const pages = [...container.querySelectorAll('li.page-item.page-number')];
 
     expect(pages.length).toBe(2);
@@ -164,8 +163,7 @@ describe('<App />', () => {
     const pageToLoad = 3;
     const {container, getAllByTestId} = render(<App />);
 
-    await waitForElement(() => getAllByTestId('jw-react-pagination'));
-
+    await wait(() => container.querySelector('li.page-item.page-number'));
     const pages = [
       ...container.querySelectorAll('li.page-item.page-number > a')
     ];
@@ -173,5 +171,27 @@ describe('<App />', () => {
     pages[pageToLoad - 1].click();
     await waitForElement(() => getAllByTestId('character-widget'));
     expect(fetchMock.called(new RegExp(`offset=${(pageToLoad - 1) * PAGINATION_DEFAULT_LIMIT}`))).toBe(true);
+  });
+
+  it('should render a placeholder defined by the default limit when fetching the api', async () => {
+    fetchMock.get('*', MOCK);
+
+    const {getAllByTestId} = render(<App />);
+    const widgets = getAllByTestId('placeholder-widget');
+
+    expect(widgets.length).toBe(PAGINATION_DEFAULT_LIMIT);
+  });
+
+  it('should not render a placeholder when characters from Marvel API are ready', async () => {
+    fetchMock.get('*', MOCK);
+
+    const {getAllByTestId, queryAllByTestId} = render(<App />);
+
+    await waitForElement(() =>
+      getAllByTestId('character-widget')
+    );
+    const widgets = queryAllByTestId('placeholder-widget');
+
+    expect(widgets.length).toBe(0);
   });
 });
