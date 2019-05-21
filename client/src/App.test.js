@@ -110,6 +110,8 @@ const TOTAL = {
   }
 };
 
+const LIMITS = [20, 50, 100];
+
 afterEach(() => {
   fetchMock.reset();
   fetchMock.restore();
@@ -193,5 +195,41 @@ describe('<App />', () => {
     const widgets = queryAllByTestId('placeholder-widget');
 
     expect(widgets.length).toBe(0);
+  });
+
+  it('should call the right query for a new selected limit per page', async () => {
+    fetchMock.get('*', MOCK);
+
+    const limitToLoad = 1; // 50
+    const {container, getAllByTestId} = render(<App />);
+
+    await wait(() => container.querySelector('.uik-btn__base.uik-select__valueRendered'));
+    container.querySelector('.uik-btn__base.uik-select__valueRendered').click();
+
+    const limits = [
+      ...container.querySelectorAll('.uik-btn__base.uik-select__option')
+    ];
+
+    limits[limitToLoad].click();
+    await waitForElement(() => getAllByTestId('character-widget'));
+    expect(fetchMock.called(new RegExp(`limit=${LIMITS[limitToLoad]}`))).toBe(true);
+  });
+
+  it('should call the right query for a new selected order', async () => {
+    fetchMock.get('*', MOCK);
+
+    const limitToLoad = 1; // -name
+    const {container, getAllByTestId} = render(<App />);
+
+    await wait(() => container.querySelector('.uik-btn__base.uik-select__valueRendered'));
+    [...container.querySelectorAll('.uik-btn__base.uik-select__valueRendered')][1].click();
+
+    const limits = [
+      ...container.querySelectorAll('.uik-btn__base.uik-select__option')
+    ];
+
+    limits[limitToLoad].click();
+    await waitForElement(() => getAllByTestId('character-widget'));
+    expect(fetchMock.called(new RegExp('orderBy=-name'))).toBe(true);
   });
 });
