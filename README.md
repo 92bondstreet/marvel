@@ -13,7 +13,6 @@ Very - _very very_ - minimalist portfolio of Marvel Characters based on [Marvel 
 ```sh
 ❯ git clone git@github.com:92bondstreet/marvel.git
 ❯ cd marvel
-❯ make install
 ```
 
 **Note:**
@@ -21,6 +20,7 @@ Very - _very very_ - minimalist portfolio of Marvel Characters based on [Marvel 
 * Bootstrapped with [create-react-app 3.0.1](https://github.com/facebook/create-react-app/blob/master/CHANGELOG.md)
 * Based on [React Hooks](https://reactjs.org/docs/hooks-intro.html) (at least React 16.8)
 * [Yarn](https://yarnpkg.com) is the package manager
+* Hosted by Docker if needed
 
 ### `/client` Configuration (.env)
 
@@ -46,8 +46,15 @@ the Marvel Comics API private key
 
 ```sh
 ## sandbox for dev purpose
-## will start the client and server side
+## will start the client and server side in containers
 ❯ make sandbox
+```
+
+#### without docker
+
+```sh
+❯ make install
+❯ make sandbox-local
 ```
 
 ## 📦 Distribution and Packaging

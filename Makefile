@@ -8,7 +8,13 @@ install: ## install what we need
 	yarn --cwd client install
 	yarn --cwd server install
 
-sandbox: ## sandbox for dev purpose
+sandbox: ## sandbox for dev purpose with Docker
+	docker-compose -f docker-compose.dev.yml up
+
+sandbox-down: ## down the sandbox containers
+	docker-compose -f docker-compose.dev.yml down
+
+sandbox-local: ## sandbox for dev purpose in local way
 	./server/node_modules/.bin/concurrently - kill-others "make sandbox-client" "make sandbox-server"
 
 sandbox-client: ## sandbox for client-side dev purpose

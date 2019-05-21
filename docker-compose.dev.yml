@@ -1,0 +1,26 @@
+version: '2'
+services:
+  server:
+    container_name: marvel-server
+    build:
+      context: ./server
+    volumes: # mounting following volumes allows the livereload
+      - ./server:/var/marvel
+      - /var/marvel/node_modules
+    ports:
+      - "8000:8000"
+    env_file: ./server/.env
+  client:
+    container_name: marvel-client
+    build:
+      context: ./client
+    volumes: # mounting following volumes allows the livereload
+      - ./client:/var/marvel
+      - /var/marvel/node_modules
+    ports:
+      - "3000:3000"
+    env_file: ./client/.env
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - server
