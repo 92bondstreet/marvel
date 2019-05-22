@@ -16,6 +16,8 @@ const CLIENT_PRODUCTION_PATH = path.join(
 
 const app = express();
 
+module.exports = app;
+
 app.use(cors());
 app.use(helmet());
 

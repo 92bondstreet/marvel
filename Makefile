@@ -27,6 +27,7 @@ sandbox-server: ## sandbox for server-side dev purpose
 	yarn --cwd server start
 
 serverless: ## deploy with zeit
+	cd server && now --target production
 	cd client && yarn build && now --target production
 
 test: ## test with watcher

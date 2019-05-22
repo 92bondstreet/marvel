@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "name": "marvelio-api",
+  "alias": ["marvelio-api"],
+  "builds": [{"src": "*.js", "use": "@now/node"}],
+  "routes": [{"src": "/(.*)", "dest": "/index.js"}],
+  "env": {
+    "MARVEL_PUBLIC_KEY": "@marvel-public-key",
+    "MARVEL_PRIVATE_KEY": "@marvel-private-key"
+  }
+}
