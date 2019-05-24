@@ -39,7 +39,7 @@ test: ## test with watcher
 	yarn --cwd client test --coverage
 
 test-ci: ## test in ci mode (without watcher)
-	yarn --cwd client test --coverage --watchAll=false
+	yarn --cwd client test-ci
 
 help: ## This help dialog.
 	@IFS=$$'\n' ; \

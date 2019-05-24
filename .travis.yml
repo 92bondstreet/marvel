@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  - "12"
+before_install:
+  - npm install -g yarn
+  - cd client
+script: yarn run test-ci
+after_success: yarn run coveralls

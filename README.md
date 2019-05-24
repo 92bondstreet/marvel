@@ -1,14 +1,17 @@
 # MARVEL
 
+[![Build Status](https://travis-ci.org/92bondstreet/marvel.svg?branch=master)](https://travis-ci.org/92bondstreet/marvel)
+[![Coverage Status](https://coveralls.io/repos/github/92bondstreet/marvel/badge.svg?branch=master)](https://coveralls.io/github/92bondstreet/marvel?branch=master)
+
 > Marvel [Characters](https://www.marvel.com/characters) portfolio
 
-[![Marvel portfolio](./web.png)](http://ec2-18-216-242-220.us-east-2.compute.amazonaws.com/)
+[![Marvel portfolio](./web.png)](https://marvelio.now.sh)
 
 ## 🐣 Introduction
 
 Very - _very very_ - minimalist portfolio of Marvel Characters based on [Marvel API](https://developer.marvel.com/documentation/getting_started)
 
-## 💻 [Live demo](http://ec2-18-216-242-220.us-east-2.compute.amazonaws.com/)
+## 💻 [Live demo](https://marvelio.now.sh)
 
 ## 🏗️  Installation
 
