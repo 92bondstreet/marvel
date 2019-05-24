@@ -7,6 +7,11 @@ build-local: ## build a ready-production web application
 	yarn --cwd client build
 	NODE_ENV=production yarn --cwd server start
 
+clean: ## clean node modules and containers
+	make sandbox-down
+	rm -rf client/node_modules
+	rm -rf server/node_modules
+
 install: ## install what we need
 	yarn --cwd client install
 	yarn --cwd server install

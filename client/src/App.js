@@ -36,6 +36,9 @@ const App = () => {
    */
   useEffect(
     () => {
+      // we abort the current request: useful when we change the page
+      // or set some options (number per page)
+      request.abort();
       request.get(`${getQuery(page, limit, orderBy)}`);
     },
     [page, limit, orderBy, request]
