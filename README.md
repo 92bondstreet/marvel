@@ -87,5 +87,5 @@ the Marvel Comics API private key
 ![Deploy to Now](https://badgen.net/badge/%E2%96%B2%20Deploy%20to%20Now/$%20now%2092bondstreet%2Fmarvel/black)
 
 ```sh
-❯ make serverless
+❯ make deploy
 ```

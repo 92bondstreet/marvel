@@ -12,6 +12,10 @@ clean: ## clean node modules and containers
 	rm -rf client/node_modules
 	rm -rf server/node_modules
 
+deploy: ## deploy with zeit
+	cd server && now --target production
+	cd client && now --target production
+
 install: ## install what we need
 	yarn --cwd client install
 	yarn --cwd server install
@@ -30,10 +34,6 @@ sandbox-client: ## sandbox for client-side dev purpose
 
 sandbox-server: ## sandbox for server-side dev purpose
 	yarn --cwd server start
-
-serverless: ## deploy with zeit
-	cd server && now --target production
-	cd client && yarn build && now --target production
 
 test: ## test with watcher
 	yarn --cwd client test --coverage

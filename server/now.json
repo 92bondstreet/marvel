@@ -5,6 +5,7 @@
   "builds": [{"src": "*.js", "use": "@now/node"}],
   "routes": [{"src": "/(.*)", "dest": "/index.js"}],
   "env": {
+    "NODE_ENV": "production",
     "MARVEL_PUBLIC_KEY": "@marvel-public-key",
     "MARVEL_PRIVATE_KEY": "@marvel-private-key"
   }

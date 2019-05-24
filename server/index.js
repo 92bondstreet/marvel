@@ -5,7 +5,7 @@ const {onProxyReq} = require('./utils');
 const helmet = require('helmet');
 const path = require('path');
 const proxy = require('http-proxy-middleware');
-const {CLIENT_PATH, MARVEL_PUBLIC_API, NODE_ENV, PORT} = require('./constants');
+const {CLIENT_PATH, MARVEL_PUBLIC_API, DOCKER_ENV, PORT} = require('./constants');
 
 const CLIENT_STATIC_PATH = path.join(__dirname, CLIENT_PATH, 'build');
 const CLIENT_PRODUCTION_PATH = path.join(
@@ -21,7 +21,7 @@ module.exports = app;
 app.use(cors());
 app.use(helmet());
 
-if (NODE_ENV === 'production') {
+if (DOCKER_ENV === 'production') {
   app.use(express.static(CLIENT_STATIC_PATH));
 
   app.get('/', (req, res) => {
